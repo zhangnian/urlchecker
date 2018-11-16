@@ -1,5 +1,10 @@
 {
   "EtcdHost": "demo.91jianke.com",
   "EtcdPort": 2379,
-  "Locations": ["shenzhen"]
+  "Locations": ["shenzhen"],
+  "MongodbUri": "mongodb://demo.91jianke.com:17017",
+  "MongodbDatabase": "urlchecker",
+  "MongodbCollection": "task_result",
+  "MaxConcurrency": 100
+
 }

@@ -6,9 +6,13 @@ import (
 )
 
 type Config struct {
-	EtcdHost  string   `json:"EtcdHost"`
-	EtcdPort  int      `json:"EtcdPort"`
-	Locations []string `json:"Locations"`
+	EtcdHost          string   `json:"EtcdHost"`
+	EtcdPort          int      `json:"EtcdPort"`
+	Locations         []string `json:"Locations"`
+	MongodbUri        string   `json:"MongodbUri"`
+	MongodbDatabase   string   `json:"MongodbDatabase"`
+	MongodbCollection string   `json:"MongodbCollection"`
+	MaxConcurrency    int      `json:"MaxConcurrency"`
 }
 
 var (

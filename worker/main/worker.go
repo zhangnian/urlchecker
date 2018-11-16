@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"time"
 	"urlchecker/common"
 	"urlchecker/worker"
 	"urlchecker/worker/config"
@@ -25,8 +24,14 @@ func main() {
 	err = common.InitTaskMgr(config.G_config.EtcdHost, config.G_config.EtcdPort)
 	common.PanicIfError(err)
 
+	err = worker.InitResultSaver()
+	common.PanicIfError(err)
+
+	err = worker.InitTaskRunner()
+	common.PanicIfError(err)
+
 	err = worker.InitTaskSched()
 	common.PanicIfError(err)
 
-	time.Sleep(time.Hour * 1)
+	worker.G_taskSched.Sched()
 }
