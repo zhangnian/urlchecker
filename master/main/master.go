@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"time"
-	"urlchecker/master"
+	"urlchecker/common"
 	"urlchecker/master/config"
 	"urlchecker/master/http"
 )
@@ -16,20 +16,14 @@ func initFlag() {
 	flag.Parse()
 }
 
-func PanicIfError(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
 func main() {
 	initFlag()
 
 	err := config.Init(*cfg)
-	PanicIfError(err)
+	common.PanicIfError(err)
 
-	err = master.InitTaskMgr()
-	PanicIfError(err)
+	err = common.InitTaskMgr(config.G_config.EtcdHost, config.G_config.EtcdPort)
+	common.PanicIfError(err)
 
 	http.Init()
 

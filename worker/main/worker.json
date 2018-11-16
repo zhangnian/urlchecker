@@ -1,0 +1,5 @@
+{
+  "EtcdHost": "demo.91jianke.com",
+  "EtcdPort": 2379,
+  "Locations": ["shenzhen"]
+}

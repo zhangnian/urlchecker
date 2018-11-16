@@ -1,8 +1,6 @@
 package http
 
 import (
-	"urlchecker/master"
-
 	"urlchecker/common"
 
 	"github.com/gin-gonic/gin"
@@ -30,7 +28,7 @@ func handlerTaskAdd(c *gin.Context) {
 	}
 	task.NewId()
 
-	err = master.G_taskMgr.SaveTask(&task)
+	err = common.G_taskMgr.SaveTask(&task)
 	if err != nil {
 		c.JSON(200, gin.H{
 			"code":    1,
@@ -61,7 +59,7 @@ func handlerTaskDelete(c *gin.Context) {
 		return
 	}
 
-	master.G_taskMgr.DeleteTask(reqBody.TaskIds)
+	common.G_taskMgr.DeleteTask(reqBody.TaskIds)
 }
 
 func handlerTaskUpdate(c *gin.Context) {
